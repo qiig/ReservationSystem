@@ -128,17 +128,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="orderFile.cpp" />
     <ClCompile Include="ReservationSystem.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="computerRoom.h" />
     <ClInclude Include="globalFile.h" />
     <ClInclude Include="Identity.h" />
+    <ClInclude Include="orderFile.h" />
     <ClInclude Include="ReservationSystem.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ReservationSystem.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\HP\Desktop\person.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

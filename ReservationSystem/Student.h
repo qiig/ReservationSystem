@@ -1,7 +1,13 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include<vector>
+#include<fstream>
+#include<iomanip>
+#include "globalFile.h"
 #include "Identity.h"
+#include "computerRoom.h"
+#include "orderFile.h"
 using namespace std;
 
 // Student Class
@@ -14,7 +20,7 @@ public:
 	void applyOrder();		// booking
 	void showMyOrder();		// show my applications
 	void showAllOrder();	// show all users' applications
-	void cancelOrder();		// cancel my applications
-protected:
+	void cancelOrder();		// cancel my application
 	int s_ID;	// student ID
+	vector<ComputerRoom> vCom;
 };

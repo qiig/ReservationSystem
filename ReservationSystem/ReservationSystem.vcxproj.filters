@@ -27,6 +27,9 @@
     <ClCompile Include="Student.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="orderFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReservationSystem.h">
@@ -47,5 +50,24 @@
     <ClInclude Include="globalFile.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="computerRoom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="orderFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ReservationSystem.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\HP\Desktop\person.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

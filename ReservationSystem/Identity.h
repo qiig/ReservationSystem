@@ -7,7 +7,6 @@ class Identity
 {
 public:
 	virtual void subMenu() = 0;		// subMenu
-protected:
 	string i_name;	// user name
 	string i_pwd;	// user's password
 };

@@ -1,7 +1,9 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include<vector>
 #include "Identity.h"
+#include "orderFile.h"
 using namespace std;
 
 // Teacher Class
@@ -13,6 +15,5 @@ public:
 	void subMenu();
 	void showAllOrder();	// show all applications
 	void validOrder();		// check applications
-protected:
 	int t_ID;
 };
