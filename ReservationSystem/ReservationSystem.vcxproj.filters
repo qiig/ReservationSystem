@@ -30,6 +30,12 @@
     <ClCompile Include="orderFile.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="passWord.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Guess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReservationSystem.h">
@@ -57,6 +63,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="passWord.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Guess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AllH.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

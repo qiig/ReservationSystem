@@ -33,6 +33,7 @@ void Student::subMenu()
 	cout << "\t\t|       2. 我的预约            |\n";
 	cout << "\t\t|       3. 所有预约            |\n";
 	cout << "\t\t|       4. 取消预约            |\n";
+	cout << "\t\t|       5. 修改密码            |\n";
 	cout << "\t\t|       0. 注销登录            |\n";
 	cout << "\t\t|                              |\n";
 	cout << "\t\t*------------------------------*\n";
@@ -264,3 +265,84 @@ void Student::cancelOrder()		// cancel my applications
 	system("pause");
 	system("cls");
 }
+
+#if 1
+void Student::changePwd() {
+	// admin id == 0
+	int id = 0, fid = 0;
+	string fname, fpwd;
+	string name, pwd;
+
+	ifstream ifs;
+	ifs.open(Stu_F, ios::in);
+
+	if (!ifs.is_open())
+	{
+		cout << "文件不存在！" << endl;
+		return;
+	}
+
+		// input vec
+		Student person;
+		vector<Student> vec;
+		
+		while (ifs >> person.s_ID && ifs >> person.i_name && ifs >> person.i_pwd) {
+			vec.push_back(person);
+		}
+		ifs.close();
+		// begin
+		// cout << "请输入要修改的 id：" << endl;
+		// cin >> id;
+		id = this->s_ID;
+		PassWord nPwd(Max_Pwd_Num);
+		cout << "请输入要修改的用户名：" << endl;
+		cin >> name;
+		pwd = nPwd.inputPwd(id);
+		vector<Student>::iterator it = vec.begin();
+		while (it != vec.end())
+		{
+			person = *it;
+			if (id == person.s_ID && name == person.i_name && person.i_pwd == pwd)
+			{
+				cout << "学生密码验证成功，请继续" << endl;
+				cout << "请输入新名称：" << endl;
+				cin >> name;
+				cout << "请输入两次新密码：" << endl;
+				while (true) {
+					person.i_pwd = nPwd.inputPwd(id);
+					pwd = nPwd.inputPwd(id);
+					if (person.i_pwd == pwd) {
+						break;
+					}
+					else {
+						cout << "两次输入的密码不一致，请重新输入 ... " << endl;
+					}
+				}
+				ofstream ofs;
+				ofs.open(Stu_F, ios::out | ios::trunc);
+				while (it != vec.end()) {
+					person = *it;
+					if (person.s_ID == id) {
+						ofs << endl << person.s_ID << " " << name << " " << pwd;
+					}
+					else {
+						ofs << endl << person.s_ID << " " << person.i_name << " " << person.i_pwd;
+					}
+					it++;
+				}
+
+				ofs.close();
+				cout << "密码修改成功！" << endl;
+				system("pause");
+				system("cls");
+				vec.clear();
+				return;
+			}
+			it++;
+		}
+		cout << "验证失败！" << endl;
+		system("pause");
+		system("cls");
+		return;
+}
+#endif

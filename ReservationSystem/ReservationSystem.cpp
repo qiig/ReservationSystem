@@ -5,6 +5,7 @@ void LoginIn(string FileName, int type);	// sign in
 void adminMenu(Identity*& person);		// admin submenu
 void studentMenu(Identity*& student);	// student submenu
 void teacherMenu(Identity*& teacher);	// teacher submenu
+void guessMenu(Guess*& guess);
 void quitMain();		// quit main function
 
 
@@ -29,6 +30,10 @@ int main()
 		case 3:
 			// Admin
 			LoginIn(Admin_F, 3);
+			break;
+		case 4:
+			// Guess
+			LoginIn(Gue_F, 4);
 			break;
 		case 0:
 			quitMain();		// Quit
@@ -57,6 +62,8 @@ void showMainMenu()
 	cout << "\t\t|    2. 教  师                 |\n";
 	cout << "\t\t|                              |\n";
 	cout << "\t\t|    3. 管理员                 |\n";
+	cout << "\t\t|                              |\n";
+	cout << "\t\t|    4. 游  客                 |\n";
 	cout << "\t\t|                              |\n";
 	cout << "\t\t|    0. 退  出                 |\n";
 	cout << "\t\t|                              |\n";
@@ -89,6 +96,17 @@ void adminMenu(Identity*& person)		// admin submenu
 		else if (select == 4)	// clear all records
 		{
 			adm->clearFile();
+		}
+		else if (select == 5)	// clear all records
+		{
+			adm->validNewPerson();
+		}
+		else if (select == 6)	// clear all records
+		{
+			adm->deleteCount();
+		}
+		else if (select == 7) {
+			adm->changeAdmPwd();
 		}
 		else if (select == 0)	// quit
 		{
@@ -150,6 +168,10 @@ void studentMenu(Identity*& student)	// student submenu
 		{
 			stu->cancelOrder();
 		}
+		else if (select == 5)
+		{
+			stu->changePwd();
+		}
 		else if (select == 0)	// sign out
 		{
 			int a;
@@ -202,6 +224,10 @@ void teacherMenu(Identity*& teacher)	// teacher submenu
 		{
 			teac->validOrder();
 		}
+		else if (select == 3)
+		{
+			teac->changePwd();
+		}
 		else if (select == 0)	// sign out
 		{
 			int a;
@@ -231,6 +257,57 @@ void teacherMenu(Identity*& teacher)	// teacher submenu
 		else
 		{
 			cout << "错误的操作， 请重新选择：" << endl;
+			system("pause");
+			system("cls");
+		}
+	}
+}
+
+void guessMenu(Guess*& guess) {
+	while (true)
+	{
+		guess->subMenu();
+
+		int select = 0;
+		cin >> select;
+
+		if (select == 1)	// addPerson
+		{
+			guess->applyNewCount();
+		}
+		else if (select == 2)	// showPerson
+		{
+			guess->checkStatus();
+		}
+		else if (select == 0)	// quit
+		{
+			int a;
+			cout << "正在注销，请确认 ... ... " << endl;
+			cout << "| 0. 取消退出 | 1. 确认退出 |" << endl;
+			cin >> a;
+			if (a != 1)
+			{
+				cout << "已取消注销. " << endl;
+				system("pause");
+				system("cls");
+			}
+			else
+			{
+				cout << "正在注销";
+				delete guess;
+				Sleep(30); cout << " "; Sleep(30); cout << "."; Sleep(25); cout << ".";
+				Sleep(20); cout << "."; Sleep(15); cout << " "; Sleep(10); cout << ".";
+				Sleep(15); cout << "."; Sleep(20); cout << "."; Sleep(25); cout << " ";
+				cout << endl;
+				cout << "已注销登录!" << endl;
+				system("pause");
+				system("cls");
+				return;
+			}
+		}
+		else
+		{
+			cout << "错误的操作！" << endl;
 			system("pause");
 			system("cls");
 		}
@@ -269,11 +346,19 @@ void LoginIn(string FileName, int type)
 		cout << "请输入工号：" << endl;
 		cin >> id;
 	}
+	else if (type == 3) {
+		id = -1;
+	}
+	else if (type == 4) {
+		id = 11;
+	}
 
 	cout << "请输入用户名：" << endl;
 	cin >> name;
-	cout << "请输入密码：" << endl;
-	cin >> pwd;
+	// cout << "请输入密码：" << endl;
+	// cin >> pwd;
+	PassWord nPwd(Max_Pwd_Num);
+	pwd = nPwd.inputPwd(id);
 
 	int fid;
 	string fname, fpwd;
@@ -311,16 +396,28 @@ void LoginIn(string FileName, int type)
 	{
 		while (ifs >> fname && ifs >> fpwd)
 		{
+			// cout << "临时密码：";
+			// cin >> pwd;
 			if (fname == name && fpwd == pwd)
 			{
 				cout << "管理员 " << name << " 登录成功！" << endl;
 				system("pause");
 				system("cls");
-				person = new Admin(name, pwd);
+				person = new Admin(name, pwd, Max_Pwd_Num);	// maxPwdNum
 				adminMenu(person);
 				return;
 			}
 		}
+	}
+	else if (type == 4) {
+		cout << "游客 " << name << " 登录成功！" << endl;
+		// cout << "请牢记账号名与密码以查看申请状态！" << endl;
+		system("pause");
+		system("cls");
+		Guess* guess;
+		guess = new Guess(name, pwd);	// maxPwdNum
+		guessMenu(guess);
+		return;
 	}
 
 	cout << "验证失败！" << endl;

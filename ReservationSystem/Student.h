@@ -8,7 +8,10 @@
 #include "Identity.h"
 #include "computerRoom.h"
 #include "orderFile.h"
+#include "passWord.h"
 using namespace std;
+
+
 
 // Student Class
 class Student :public Identity
@@ -23,4 +26,5 @@ public:
 	void cancelOrder();		// cancel my application
 	int s_ID;	// student ID
 	vector<ComputerRoom> vCom;
+	void changePwd();
 };

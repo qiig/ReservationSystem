@@ -5,4 +5,6 @@
 #define Tea_F "teachers.txt"	// teachers file
 #define Cpt_F "computerRoomsInfo.txt"	// computer rooms' info.
 #define Ord_F "order.txt"	// booking info.
+#define Gue_F "guess.txt"	// guess file
+#define Max_Pwd_Num 50
 

@@ -128,17 +128,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Guess.cpp" />
     <ClCompile Include="orderFile.cpp" />
+    <ClCompile Include="passWord.cpp" />
     <ClCompile Include="ReservationSystem.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="AllH.h" />
     <ClInclude Include="computerRoom.h" />
     <ClInclude Include="globalFile.h" />
+    <ClInclude Include="Guess.h" />
     <ClInclude Include="Identity.h" />
     <ClInclude Include="orderFile.h" />
+    <ClInclude Include="passWord.h" />
     <ClInclude Include="ReservationSystem.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Student.h" />

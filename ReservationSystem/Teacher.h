@@ -4,6 +4,9 @@
 #include<vector>
 #include "Identity.h"
 #include "orderFile.h"
+#include "passWord.h"
+#include "globalFile.h"
+
 using namespace std;
 
 // Teacher Class
@@ -16,4 +19,5 @@ public:
 	void showAllOrder();	// show all applications
 	void validOrder();		// check applications
 	int t_ID;
+	void changePwd();
 };
